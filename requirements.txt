@@ -1,0 +1,26 @@
+# Core AI and CrewAI framework
+crewai>=0.175.0
+litellm>=1.0.0
+
+# Search and data APIs
+tavily-python>=0.3.0
+yfinance>=0.2.0
+pandas>=2.0.0
+
+# Communication
+python-telegram-bot>=20.0
+
+# PDF and image generation
+reportlab>=4.0.0
+matplotlib>=3.7.0
+Pillow>=10.0.0
+
+# Utilities
+requests>=2.31.0
+python-dotenv>=1.0.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# Optional: For enhanced features
+numpy>=1.24.0
+seaborn>=0.12.0

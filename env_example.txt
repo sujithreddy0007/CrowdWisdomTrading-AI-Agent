@@ -1,0 +1,16 @@
+# API Keys - Your actual keys (copy these to your .env file)
+OPENAI_API_KEY=sk-proj-...your_actual_openai_key_here...
+TAVILY_API_KEY=tvly-dev-...your_actual_tavily_key_here...
+TELEGRAM_BOT_TOKEN=...your_actual_telegram_bot_token_here...
+TELEGRAM_CHAT_ID=...your_actual_telegram_chat_id_here...
+GROQ_API_KEY=gsk_...your_actual_groq_key_here...
+
+# Configuration
+MARKET_TIMEZONE=America/New_York
+SUMMARY_LANGUAGE=en
+TRANSLATION_LANGUAGES=hi,ar,he
+
+# Output Settings
+MAX_SUMMARY_WORDS=500
+OUTPUT_DIR=outputs
+PDF_FILENAME=daily_market_summary.pdf
