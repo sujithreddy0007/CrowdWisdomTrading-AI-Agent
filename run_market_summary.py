@@ -7,7 +7,6 @@ A CrewAI-based system for generating and delivering daily financial market summa
 import os
 import sys
 import argparse
-import schedule
 import time
 from datetime import datetime
 import logging
@@ -17,21 +16,13 @@ from utils import setup_logging, is_market_closed
 
 def setup_environment():
     """Setup environment and validate configuration"""
-    # Load environment variables
-    if not os.path.exists('.env'):
-        print("Warning: .env file not found. Please create one based on .env.example")
-        print("Required environment variables:")
-        print("- OPENAI_API_KEY")
-        print("- TAVILY_API_KEY") 
-        print("- TELEGRAM_BOT_TOKEN")
-        print("- TELEGRAM_CHAT_ID")
-        return False
-    
     try:
         Config.validate()
         return True
     except ValueError as e:
         print(f"Configuration error: {e}")
+        print("Ensure the required environment variables are set in your environment or a .env file.")
+        print("You can use the provided env_example.txt as a reference.")
         return False
 
 def run_summary():
@@ -64,6 +55,12 @@ def run_summary():
 def schedule_daily_run():
     """Schedule the daily run at market close time"""
     # Schedule for 4:30 PM EST (30 minutes after market close)
+    try:
+        import schedule
+    except ModuleNotFoundError:
+        print("The 'schedule' package is not installed. Install it with: pip install schedule")
+        return
+
     schedule.every().day.at("16:30").do(run_summary)
     
     print("Scheduled daily market summary at 4:30 PM EST")

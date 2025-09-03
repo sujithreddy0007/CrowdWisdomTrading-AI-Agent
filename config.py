@@ -34,7 +34,7 @@ class Config:
     # Validation
     @classmethod
     def validate(cls):
-        required_keys = ['OPENAI_API_KEY', 'TAVILY_API_KEY', 'TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID']
+        required_keys = ['GROQ_API_KEY', 'TAVILY_API_KEY', 'TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID']
         missing = [key for key in required_keys if not getattr(cls, key)]
         if missing:
             raise ValueError(f"Missing required environment variables: {', '.join(missing)}")

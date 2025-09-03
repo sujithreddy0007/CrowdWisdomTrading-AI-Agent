@@ -1,0 +1,20 @@
+{
+  "timestamp": "2025-09-03T11:39:10.258083",
+  "status": "demo_completed",
+  "files_generated": [
+    "demo_search_results.json",
+    "demo_market_summary.md",
+    "demo_summary_hi.md",
+    "demo_summary_ar.md",
+    "demo_summary_he.md",
+    "daily_market_summary.pdf"
+  ],
+  "languages": [
+    "en",
+    "hi",
+    "ar",
+    "he"
+  ],
+  "word_count": 192,
+  "message": "Demo completed successfully - all sample files generated"
+}

@@ -1,19 +1,36 @@
-from crewai_tools import BaseTool
+try:
+    from crewai_tools import BaseTool  # type: ignore
+    BASETOOL_AVAILABLE = True
+except Exception:
+    # Compatibility shim for environments where BaseTool isn't exported
+    from typing import Any
+    BASETOOL_AVAILABLE = False
+    class BaseTool:  # minimal interface needed by CrewAI tools
+        name: str = ""
+        description: str = ""
+        args_schema = None
+
+        def __init__(self, *args: Any, **kwargs: Any) -> None:
+            pass
+
+        # CrewAI expects tools to expose a run method; delegate to _run
+        def run(self, *args: Any, **kwargs: Any):  # noqa: D401
+            return self._run(*args, **kwargs)
 from typing import Type, Optional
 from pydantic import BaseModel, Field
 import requests
 import json
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime
 import yfinance as yf
 import matplotlib.pyplot as plt
-import io
-import base64
+import os
 from config import Config
 from utils import download_image, clean_text
 
 logger = logging.getLogger(__name__)
 
+# ---------------- Tavily Search ---------------- #
 class TavilySearchInput(BaseModel):
     query: str = Field(..., description="Search query for financial news")
     max_results: int = Field(default=10, description="Maximum number of results to return")
@@ -25,6 +42,7 @@ class TavilySearchTool(BaseTool):
 
     def _run(self, query: str, max_results: int = 10) -> str:
         """Search for financial news using Tavily API"""
+
         try:
             url = "https://api.tavily.com/search"
             payload = {
@@ -59,7 +77,7 @@ class TavilySearchTool(BaseTool):
                     }
                     results.append(result)
             
-            # Include answer if available
+            # Include AI summary if available
             if 'answer' in data and data['answer']:
                 results.insert(0, {
                     'title': 'AI Summary',
@@ -75,6 +93,7 @@ class TavilySearchTool(BaseTool):
             logger.error(f"Tavily search failed: {e}")
             return json.dumps([{"error": f"Search failed: {str(e)}"}])
 
+# ---------------- Market Data ---------------- #
 class MarketDataInput(BaseModel):
     symbols: str = Field(..., description="Comma-separated list of stock symbols (e.g., 'AAPL,MSFT,GOOGL')")
     period: str = Field(default="1d", description="Time period for data (1d, 5d, 1mo, etc.)")
@@ -87,6 +106,7 @@ class MarketDataTool(BaseTool):
     def _run(self, symbols: str, period: str = "1d") -> str:
         """Fetch market data and create charts"""
         try:
+            os.makedirs("temp_images", exist_ok=True)  # ensure folder exists
             symbol_list = [s.strip().upper() for s in symbols.split(',')]
             results = {}
             
@@ -100,7 +120,7 @@ class MarketDataTool(BaseTool):
                         current_price = hist['Close'].iloc[-1]
                         prev_close = hist['Close'].iloc[-2] if len(hist) > 1 else current_price
                         change = current_price - prev_close
-                        change_pct = (change / prev_close) * 100
+                        change_pct = (change / prev_close) * 100 if prev_close else 0
                         
                         # Create simple chart
                         plt.figure(figsize=(10, 6))
@@ -136,6 +156,7 @@ class MarketDataTool(BaseTool):
             logger.error(f"Market data fetch failed: {e}")
             return json.dumps({"error": f"Market data fetch failed: {str(e)}"})
 
+# ---------------- Image Search ---------------- #
 class ImageSearchInput(BaseModel):
     query: str = Field(..., description="Search query for financial images")
     max_results: int = Field(default=3, description="Maximum number of images to return")
@@ -187,9 +208,10 @@ class ImageSearchTool(BaseTool):
             logger.error(f"Image search failed: {e}")
             return json.dumps([{"error": f"Image search failed: {str(e)}"}])
 
+# ---------------- Telegram Sender ---------------- #
 class TelegramSendInput(BaseModel):
     message: str = Field(..., description="Message content to send")
-    chat_id: str = Field(..., description="Telegram chat ID")
+    chat_id: str = Field(..., description="Telegram chat ID or @channelusername")
     image_path: Optional[str] = Field(None, description="Path to image file to send")
 
 class TelegramSendTool(BaseTool):
@@ -236,7 +258,7 @@ class TelegramSendTool(BaseTool):
             logger.error(f"Telegram send failed: {e}")
             return json.dumps({"success": False, "error": str(e)})
 
-# Tool instances
+# ---------------- Tool Instances ---------------- #
 tavily_search_tool = TavilySearchTool()
 market_data_tool = MarketDataTool()
 image_search_tool = ImageSearchTool()

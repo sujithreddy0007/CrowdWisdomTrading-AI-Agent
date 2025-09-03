@@ -1,0 +1,70 @@
+{
+  "search_results": [
+    {
+      "title": "S&P 500 Rises 0.5% as Tech Stocks Lead Market Rally",
+      "content": "The S&P 500 closed higher today, gaining 0.5% as technology stocks led a broad market rally. The index closed at 4,567.89, up 22.34 points from yesterday's close.",
+      "url": "https://example.com/sp500-rally",
+      "published_date": "2025-09-03T11:39:10.218468",
+      "score": 0.95
+    },
+    {
+      "title": "Federal Reserve Holds Interest Rates Steady",
+      "content": "The Federal Reserve announced today that it will maintain the current federal funds rate at 5.25-5.50%, citing ongoing inflation concerns and strong economic growth.",
+      "url": "https://example.com/fed-rates",
+      "published_date": "2025-09-03T11:39:10.218487",
+      "score": 0.92
+    },
+    {
+      "title": "NASDAQ Dips 0.3% Despite Strong Apple Earnings",
+      "content": "The NASDAQ Composite fell 0.3% today, closing at 14,234.56, despite Apple Inc. reporting better-than-expected quarterly earnings after the bell.",
+      "url": "https://example.com/nasdaq-apple",
+      "published_date": "2025-09-03T11:39:10.218488",
+      "score": 0.88
+    }
+  ],
+  "market_data": {
+    "indices": {
+      "SPY": {
+        "price": 456.78,
+        "change": 2.34,
+        "change_pct": 0.51
+      },
+      "QQQ": {
+        "price": 378.45,
+        "change": -1.12,
+        "change_pct": -0.3
+      },
+      "DIA": {
+        "price": 345.67,
+        "change": 0.89,
+        "change_pct": 0.26
+      }
+    },
+    "sectors": {
+      "Technology": {
+        "performance": 0.8,
+        "top_stocks": [
+          "AAPL",
+          "MSFT",
+          "GOOGL"
+        ]
+      },
+      "Healthcare": {
+        "performance": 0.3,
+        "top_stocks": [
+          "JNJ",
+          "PFE",
+          "UNH"
+        ]
+      },
+      "Financial": {
+        "performance": -0.2,
+        "top_stocks": [
+          "JPM",
+          "BAC",
+          "WFC"
+        ]
+      }
+    }
+  }
+}

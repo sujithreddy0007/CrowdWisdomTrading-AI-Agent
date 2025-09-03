@@ -1,7 +1,7 @@
 from crewai import Crew, Process
 from agents import MarketAgents
 from tasks import MarketTasks
-from tools import tavily_search_tool, market_data_tool, image_search_tool, telegram_send_tool
+from tools import tavily_search_tool, market_data_tool, image_search_tool, telegram_send_tool, BASETOOL_AVAILABLE
 from pdf_generator import PDFGenerator
 from config import Config
 from utils import setup_logging, is_market_closed, validate_summary, format_telegram_message
@@ -19,6 +19,15 @@ class MarketSummaryCrew:
         # Validate configuration
         Config.validate()
         
+        # Ensure required environment variables for CrewAI integrations
+        if not os.getenv("GROQ_API_KEY"):
+            os.environ["GROQ_API_KEY"] = Config.GROQ_API_KEY
+        if not os.getenv("CHROMA_OPENAI_API_KEY"):
+            os.environ["CHROMA_OPENAI_API_KEY"] = Config.OPENAI_API_KEY
+        
+        # Set global LLM configuration for CrewAI
+        os.environ["OPENAI_API_KEY"] = Config.GROQ_API_KEY  # Fallback for any OpenAI calls
+
         # Initialize components
         self.agents = MarketAgents()
         self.tasks = MarketTasks()
@@ -34,10 +43,13 @@ class MarketSummaryCrew:
         self.translation_agent = self.agents.create_translation_agent()
         self.send_agent = self.agents.create_send_agent()
         
-        # Assign tools to agents
-        self.search_agent.tools = [tavily_search_tool, market_data_tool]
-        self.formatting_agent.tools = [image_search_tool, market_data_tool]
-        self.send_agent.tools = [telegram_send_tool]
+        # Assign tools to agents only if BaseTool is available (compatible version)
+        if BASETOOL_AVAILABLE:
+            self.search_agent.tools = [tavily_search_tool, market_data_tool]
+            self.formatting_agent.tools = [image_search_tool, market_data_tool]
+            self.send_agent.tools = [telegram_send_tool]
+        else:
+            logger.warning("crewai_tools.BaseTool not available; skipping tool attachment to agents.")
         
         logger.info("Market Summary Crew initialized successfully")
     
@@ -54,14 +66,8 @@ class MarketSummaryCrew:
             tasks=tasks,
             process=Process.sequential,
             verbose=True,
-            memory=True,
-            planning=True,
-            embedder={
-                "provider": "openai",
-                "config": {
-                    "model": "text-embedding-3-small"
-                }
-            }
+            memory=False,
+            planning=False
         )
     
     def run_daily_summary(self):
@@ -96,10 +102,11 @@ class MarketSummaryCrew:
             
             # Step 5: Send to Telegram
             logger.info("Step 5: Sending to Telegram")
-            send_task = self.tasks.create_send_task(self.send_agent, {
-                'formatted': formatting_task,
-                'translations': translation_tasks
-            })
+            send_task = self.tasks.create_send_task(
+                self.send_agent,
+                formatting_task,
+                translation_tasks
+            )
             
             # Create crew with all tasks
             tasks_list = [search_task, summary_task, formatting_task] + translation_tasks + [send_task]

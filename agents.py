@@ -1,5 +1,4 @@
-from crewai import Agent
-from langchain_openai import ChatOpenAI
+from crewai import Agent, LLM
 from config import Config
 import logging
 
@@ -7,11 +6,11 @@ logger = logging.getLogger(__name__)
 
 class MarketAgents:
     def __init__(self):
-        # Initialize LLM
-        self.llm = ChatOpenAI(
-            model="gpt-4o-mini",
+        # Initialize CrewAI LLM with Groq provider (litellm expects provider-prefixed model)
+        self.llm = LLM(
+            model="groq/llama-3.3-70b-versatile",
             temperature=0.1,
-            api_key=Config.OPENAI_API_KEY
+            api_key=Config.GROQ_API_KEY
         )
     
     def create_search_agent(self):

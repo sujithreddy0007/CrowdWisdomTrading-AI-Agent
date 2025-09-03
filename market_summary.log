@@ -1,0 +1,1295 @@
+2025-09-03 17:25:38,422 - __main__ - INFO - ==================================================
+2025-09-03 17:25:38,422 - __main__ - INFO - Starting Daily Market Summary Generation
+2025-09-03 17:25:38,422 - __main__ - INFO - Timestamp: 2025-09-03 17:25:38.422685
+2025-09-03 17:25:38,422 - __main__ - INFO - ==================================================
+2025-09-03 17:25:39,138 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
+2025-09-03 17:25:39,138 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
+2025-09-03 17:25:39,141 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansArabic-Regular.ttf
+2025-09-03 17:25:39,141 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansHebrew-Regular.ttf
+2025-09-03 17:25:39,141 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf
+2025-09-03 17:25:39,145 - utils - INFO - Market Summary Crew initialized successfully
+2025-09-03 17:25:39,145 - utils - INFO - Starting daily market summary generation
+2025-09-03 17:25:39,145 - utils - INFO - Step 1: Searching for financial news
+2025-09-03 17:25:39,145 - utils - INFO - Step 2: Creating market summary
+2025-09-03 17:25:39,145 - utils - INFO - Step 3: Formatting with visual elements
+2025-09-03 17:25:39,145 - utils - INFO - Step 4: Translating to multiple languages
+2025-09-03 17:25:39,146 - utils - INFO - Step 5: Sending to Telegram
+2025-09-03 17:25:39,146 - utils - ERROR - Error in daily summary workflow: 3 validation errors for Task
+context.list[function-after[handle_max_retries_deprecation(), function-after[check_output(), function-after[check_tools(), function-after[set_attributes_based_on_config(), function-after[ensure_guardrail_is_callable(), function-after[validate_required_fields(), Task]]]]]]].0.description
+  Field required [type=missing, input_value={'formatted': Task(descri...lication
+            )]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+context.list[function-after[handle_max_retries_deprecation(), function-after[check_output(), function-after[check_tools(), function-after[set_attributes_based_on_config(), function-after[ensure_guardrail_is_callable(), function-after[validate_required_fields(), Task]]]]]]].0.expected_output
+  Field required [type=missing, input_value={'formatted': Task(descri...lication
+            )]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+context.is-instance[_NotSpecified]
+  Input should be an instance of _NotSpecified [type=is_instance_of, input_value=[{'formatted': Task(descr...ication
+            )]}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/is_instance_of
+2025-09-03 17:25:39,146 - __main__ - ERROR - Market summary generation failed: 3 validation errors for Task
+context.list[function-after[handle_max_retries_deprecation(), function-after[check_output(), function-after[check_tools(), function-after[set_attributes_based_on_config(), function-after[ensure_guardrail_is_callable(), function-after[validate_required_fields(), Task]]]]]]].0.description
+  Field required [type=missing, input_value={'formatted': Task(descri...lication
+            )]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+context.list[function-after[handle_max_retries_deprecation(), function-after[check_output(), function-after[check_tools(), function-after[set_attributes_based_on_config(), function-after[ensure_guardrail_is_callable(), function-after[validate_required_fields(), Task]]]]]]].0.expected_output
+  Field required [type=missing, input_value={'formatted': Task(descri...lication
+            )]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+context.is-instance[_NotSpecified]
+  Input should be an instance of _NotSpecified [type=is_instance_of, input_value=[{'formatted': Task(descr...ication
+            )]}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/is_instance_of
+2025-09-03 17:25:39,146 - __main__ - ERROR - Full traceback:
+Traceback (most recent call last):
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\run_market_summary.py", line 40, in run_summary
+    result = crew.run_daily_summary()
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\market_summary_crew.py", line 99, in run_daily_summary
+    send_task = self.tasks.create_send_task(self.send_agent, {
+        'formatted': formatting_task,
+        'translations': translation_tasks
+    })
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\tasks.py", line 181, in create_send_task
+    return Task(
+        description=f"""
+    ...<39 lines>...
+        output_file="delivery_report.json"
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\pydantic\main.py", line 253, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 3 validation errors for Task
+context.list[function-after[handle_max_retries_deprecation(), function-after[check_output(), function-after[check_tools(), function-after[set_attributes_based_on_config(), function-after[ensure_guardrail_is_callable(), function-after[validate_required_fields(), Task]]]]]]].0.description
+  Field required [type=missing, input_value={'formatted': Task(descri...lication
+            )]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+context.list[function-after[handle_max_retries_deprecation(), function-after[check_output(), function-after[check_tools(), function-after[set_attributes_based_on_config(), function-after[ensure_guardrail_is_callable(), function-after[validate_required_fields(), Task]]]]]]].0.expected_output
+  Field required [type=missing, input_value={'formatted': Task(descri...lication
+            )]}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+context.is-instance[_NotSpecified]
+  Input should be an instance of _NotSpecified [type=is_instance_of, input_value=[{'formatted': Task(descr...ication
+            )]}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/is_instance_of
+2025-09-03 17:27:22,178 - __main__ - INFO - ==================================================
+2025-09-03 17:27:22,179 - __main__ - INFO - Starting Daily Market Summary Generation
+2025-09-03 17:27:22,179 - __main__ - INFO - Timestamp: 2025-09-03 17:27:22.179371
+2025-09-03 17:27:22,179 - __main__ - INFO - ==================================================
+2025-09-03 17:27:22,620 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
+2025-09-03 17:27:22,621 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
+2025-09-03 17:27:22,621 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansArabic-Regular.ttf
+2025-09-03 17:27:22,621 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansHebrew-Regular.ttf
+2025-09-03 17:27:22,621 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf
+2025-09-03 17:27:22,625 - utils - INFO - Market Summary Crew initialized successfully
+2025-09-03 17:27:22,626 - utils - INFO - Starting daily market summary generation
+2025-09-03 17:27:22,626 - utils - INFO - Step 1: Searching for financial news
+2025-09-03 17:27:22,626 - utils - INFO - Step 2: Creating market summary
+2025-09-03 17:27:22,626 - utils - INFO - Step 3: Formatting with visual elements
+2025-09-03 17:27:22,627 - utils - INFO - Step 4: Translating to multiple languages
+2025-09-03 17:27:22,627 - utils - INFO - Step 5: Sending to Telegram
+2025-09-03 17:27:22,659 - utils - ERROR - Error in daily summary workflow: 1 validation error for Crew
+  Value error, The CHROMA_OPENAI_API_KEY environment variable is not set. [type=value_error, input_value={'agents': [Agent(role=Fi...xt-embedding-3-small'}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-03 17:27:22,660 - __main__ - ERROR - Market summary generation failed: 1 validation error for Crew
+  Value error, The CHROMA_OPENAI_API_KEY environment variable is not set. [type=value_error, input_value={'agents': [Agent(role=Fi...xt-embedding-3-small'}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-03 17:27:22,660 - __main__ - ERROR - Full traceback:
+Traceback (most recent call last):
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\run_market_summary.py", line 40, in run_summary
+    result = crew.run_daily_summary()
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\market_summary_crew.py", line 107, in run_daily_summary
+    crew = self.create_crew(tasks_list)
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\market_summary_crew.py", line 46, in create_crew
+    return Crew(
+        agents=[
+    ...<16 lines>...
+        }
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\pydantic\main.py", line 253, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for Crew
+  Value error, The CHROMA_OPENAI_API_KEY environment variable is not set. [type=value_error, input_value={'agents': [Agent(role=Fi...xt-embedding-3-small'}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-03 17:30:52,609 - __main__ - INFO - ==================================================
+2025-09-03 17:30:52,609 - __main__ - INFO - Starting Daily Market Summary Generation
+2025-09-03 17:30:52,610 - __main__ - INFO - Timestamp: 2025-09-03 17:30:52.610031
+2025-09-03 17:30:52,610 - __main__ - INFO - ==================================================
+2025-09-03 17:30:53,036 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
+2025-09-03 17:30:53,036 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
+2025-09-03 17:30:53,036 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansArabic-Regular.ttf
+2025-09-03 17:30:53,036 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansHebrew-Regular.ttf
+2025-09-03 17:30:53,037 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf
+2025-09-03 17:30:53,040 - utils - INFO - Market Summary Crew initialized successfully
+2025-09-03 17:30:53,040 - utils - INFO - Starting daily market summary generation
+2025-09-03 17:30:53,040 - utils - INFO - Step 1: Searching for financial news
+2025-09-03 17:30:53,041 - utils - INFO - Step 2: Creating market summary
+2025-09-03 17:30:53,041 - utils - INFO - Step 3: Formatting with visual elements
+2025-09-03 17:30:53,041 - utils - INFO - Step 4: Translating to multiple languages
+2025-09-03 17:30:53,042 - utils - INFO - Step 5: Sending to Telegram
+2025-09-03 17:30:53,253 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-03 17:30:55,912 - root - INFO - Collection found or created: Collection(name=short_term)
+2025-09-03 17:30:56,069 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-03 17:30:56,382 - root - INFO - Collection found or created: Collection(name=entities)
+2025-09-03 17:30:56,382 - utils - ERROR - Error in daily summary workflow: 1 validation error for Crew
+  Value error, Tool is not a CrewStructuredTool or BaseTool [type=value_error, input_value={'agents': [Agent(role=Fi...xt-embedding-3-small'}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-03 17:30:56,383 - __main__ - ERROR - Market summary generation failed: 1 validation error for Crew
+  Value error, Tool is not a CrewStructuredTool or BaseTool [type=value_error, input_value={'agents': [Agent(role=Fi...xt-embedding-3-small'}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-03 17:30:56,383 - __main__ - ERROR - Full traceback:
+Traceback (most recent call last):
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\run_market_summary.py", line 40, in run_summary
+    result = crew.run_daily_summary()
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\market_summary_crew.py", line 113, in run_daily_summary
+    crew = self.create_crew(tasks_list)
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\market_summary_crew.py", line 52, in create_crew
+    return Crew(
+        agents=[
+    ...<16 lines>...
+        }
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\pydantic\main.py", line 253, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for Crew
+  Value error, Tool is not a CrewStructuredTool or BaseTool [type=value_error, input_value={'agents': [Agent(role=Fi...xt-embedding-3-small'}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-03 17:32:21,591 - __main__ - INFO - ==================================================
+2025-09-03 17:32:21,591 - __main__ - INFO - Starting Daily Market Summary Generation
+2025-09-03 17:32:21,591 - __main__ - INFO - Timestamp: 2025-09-03 17:32:21.591851
+2025-09-03 17:32:21,591 - __main__ - INFO - ==================================================
+2025-09-03 17:32:22,053 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
+2025-09-03 17:32:22,053 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
+2025-09-03 17:32:22,053 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansArabic-Regular.ttf
+2025-09-03 17:32:22,053 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansHebrew-Regular.ttf
+2025-09-03 17:32:22,054 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf
+2025-09-03 17:32:22,058 - utils - WARNING - crewai_tools.BaseTool not available; skipping tool attachment to agents.
+2025-09-03 17:32:22,058 - utils - INFO - Market Summary Crew initialized successfully
+2025-09-03 17:32:22,058 - utils - INFO - Starting daily market summary generation
+2025-09-03 17:32:22,058 - utils - INFO - Step 1: Searching for financial news
+2025-09-03 17:32:22,058 - utils - INFO - Step 2: Creating market summary
+2025-09-03 17:32:22,058 - utils - INFO - Step 3: Formatting with visual elements
+2025-09-03 17:32:22,059 - utils - INFO - Step 4: Translating to multiple languages
+2025-09-03 17:32:22,059 - utils - INFO - Step 5: Sending to Telegram
+2025-09-03 17:32:22,229 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-03 17:32:22,452 - root - INFO - Collection found or created: Collection(name=short_term)
+2025-09-03 17:32:22,608 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-03 17:32:22,791 - root - INFO - Collection found or created: Collection(name=entities)
+2025-09-03 17:32:22,794 - utils - INFO - Executing CrewAI workflow
+2025-09-03 17:32:22,824 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-09-03 17:32:23,458 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-09-03 17:32:23,602 - utils - ERROR - Error in daily summary workflow: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided: sk-proj-*****************************e.... You can find your API key at https://platform.openai.com/account/api-keys.
+2025-09-03 17:32:23,603 - __main__ - ERROR - Market summary generation failed: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided: sk-proj-*****************************e.... You can find your API key at https://platform.openai.com/account/api-keys.
+2025-09-03 17:32:23,603 - __main__ - ERROR - Full traceback:
+Traceback (most recent call last):
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\openai\openai.py", line 725, in completion
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\openai\openai.py", line 653, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 149, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\openai\openai.py", line 471, in make_sync_openai_chat_completion_request
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\openai\openai.py", line 453, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\openai\_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\openai\_utils\_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1147, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<46 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\openai\_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\openai\_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-*****************************e.... You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\main.py", line 1966, in completion
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\main.py", line 1939, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<15 lines>...
+        custom_llm_provider=custom_llm_provider,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\openai\openai.py", line 736, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-*****************************e.... You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\run_market_summary.py", line 40, in run_summary
+    result = crew.run_daily_summary()
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\market_summary_crew.py", line 120, in run_daily_summary
+    result = crew.kickoff()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\crew.py", line 658, in kickoff
+    self._handle_crew_planning()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\crew.py", line 736, in _handle_crew_planning
+    )._handle_crew_planning()
+      ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\utilities\planning_handler.py", line 46, in _handle_crew_planning
+    result = planner_task.execute_sync()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 382, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 530, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 446, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 475, in execute_task
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 451, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 547, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 114, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 208, in _invoke_loop
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 154, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<3 lines>...
+        from_task=self.task
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\utilities\agent_utils.py", line 160, in get_llm_response
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\utilities\agent_utils.py", line 153, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<2 lines>...
+        from_agent=from_agent,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\llm.py", line 1030, in call
+    return self._handle_non_streaming_response(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        params, callbacks, available_functions, from_task, from_agent
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\llm.py", line 813, in _handle_non_streaming_response
+    response = litellm.completion(**params)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\utils.py", line 1330, in wrapper
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\utils.py", line 1205, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\main.py", line 3427, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2301, in exception_type
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 456, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided: sk-proj-*****************************e.... You can find your API key at https://platform.openai.com/account/api-keys.
+2025-09-03 17:37:31,381 - __main__ - INFO - ==================================================
+2025-09-03 17:37:31,381 - __main__ - INFO - Starting Daily Market Summary Generation
+2025-09-03 17:37:31,382 - __main__ - INFO - Timestamp: 2025-09-03 17:37:31.382125
+2025-09-03 17:37:31,382 - __main__ - INFO - ==================================================
+2025-09-03 17:37:31,814 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
+2025-09-03 17:37:31,814 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
+2025-09-03 17:37:31,814 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansArabic-Regular.ttf
+2025-09-03 17:37:31,815 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansHebrew-Regular.ttf
+2025-09-03 17:37:31,815 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf
+2025-09-03 17:37:31,818 - utils - WARNING - crewai_tools.BaseTool not available; skipping tool attachment to agents.
+2025-09-03 17:37:31,819 - utils - INFO - Market Summary Crew initialized successfully
+2025-09-03 17:37:31,819 - utils - INFO - Starting daily market summary generation
+2025-09-03 17:37:31,819 - utils - INFO - Step 1: Searching for financial news
+2025-09-03 17:37:31,819 - utils - INFO - Step 2: Creating market summary
+2025-09-03 17:37:31,820 - utils - INFO - Step 3: Formatting with visual elements
+2025-09-03 17:37:31,820 - utils - INFO - Step 4: Translating to multiple languages
+2025-09-03 17:37:31,820 - utils - INFO - Step 5: Sending to Telegram
+2025-09-03 17:37:31,988 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-03 17:37:32,214 - root - INFO - Collection found or created: Collection(name=short_term)
+2025-09-03 17:37:32,371 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-03 17:37:32,553 - root - INFO - Collection found or created: Collection(name=entities)
+2025-09-03 17:37:32,556 - utils - INFO - Executing CrewAI workflow
+2025-09-03 17:37:32,589 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-09-03 17:37:34,767 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-09-03 17:37:34,768 - openai._base_client - INFO - Retrying request to /chat/completions in 0.385708 seconds
+2025-09-03 17:37:36,130 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-09-03 17:37:36,132 - openai._base_client - INFO - Retrying request to /chat/completions in 0.770048 seconds
+2025-09-03 17:37:38,058 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-09-03 17:37:38,092 - utils - ERROR - Error in daily summary workflow: litellm.RateLimitError: RateLimitError: OpenAIException - You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.
+2025-09-03 17:37:38,092 - __main__ - ERROR - Market summary generation failed: litellm.RateLimitError: RateLimitError: OpenAIException - You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.
+2025-09-03 17:37:38,092 - __main__ - ERROR - Full traceback:
+Traceback (most recent call last):
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\openai\openai.py", line 725, in completion
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\openai\openai.py", line 653, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 149, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\openai\openai.py", line 471, in make_sync_openai_chat_completion_request
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\openai\openai.py", line 453, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\openai\_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\openai\_utils\_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1147, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<46 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\openai\_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\openai\_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.RateLimitError: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\main.py", line 1966, in completion
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\main.py", line 1939, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<15 lines>...
+        custom_llm_provider=custom_llm_provider,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\openai\openai.py", line 736, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\run_market_summary.py", line 40, in run_summary
+    result = crew.run_daily_summary()
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\market_summary_crew.py", line 120, in run_daily_summary
+    result = crew.kickoff()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\crew.py", line 658, in kickoff
+    self._handle_crew_planning()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\crew.py", line 736, in _handle_crew_planning
+    )._handle_crew_planning()
+      ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\utilities\planning_handler.py", line 46, in _handle_crew_planning
+    result = planner_task.execute_sync()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 382, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 530, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 446, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 475, in execute_task
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 451, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 547, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 114, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 208, in _invoke_loop
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 154, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<3 lines>...
+        from_task=self.task
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\utilities\agent_utils.py", line 160, in get_llm_response
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\utilities\agent_utils.py", line 153, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<2 lines>...
+        from_agent=from_agent,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\llm.py", line 1030, in call
+    return self._handle_non_streaming_response(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        params, callbacks, available_functions, from_task, from_agent
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\llm.py", line 813, in _handle_non_streaming_response
+    response = litellm.completion(**params)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\utils.py", line 1330, in wrapper
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\utils.py", line 1205, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\main.py", line 3427, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2301, in exception_type
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 329, in exception_type
+    raise RateLimitError(
+    ...<4 lines>...
+    )
+litellm.exceptions.RateLimitError: litellm.RateLimitError: RateLimitError: OpenAIException - You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.
+2025-09-03 17:49:16,478 - __main__ - INFO - ==================================================
+2025-09-03 17:49:16,478 - __main__ - INFO - Starting Daily Market Summary Generation
+2025-09-03 17:49:16,478 - __main__ - INFO - Timestamp: 2025-09-03 17:49:16.478677
+2025-09-03 17:49:16,478 - __main__ - INFO - ==================================================
+2025-09-03 17:49:16,953 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
+2025-09-03 17:49:16,953 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
+2025-09-03 17:49:16,953 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansArabic-Regular.ttf
+2025-09-03 17:49:16,953 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansHebrew-Regular.ttf
+2025-09-03 17:49:16,953 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf
+2025-09-03 17:49:16,958 - utils - WARNING - crewai_tools.BaseTool not available; skipping tool attachment to agents.
+2025-09-03 17:49:16,958 - utils - INFO - Market Summary Crew initialized successfully
+2025-09-03 17:49:16,958 - utils - INFO - Starting daily market summary generation
+2025-09-03 17:49:16,958 - utils - INFO - Step 1: Searching for financial news
+2025-09-03 17:49:16,959 - utils - INFO - Step 2: Creating market summary
+2025-09-03 17:49:16,959 - utils - INFO - Step 3: Formatting with visual elements
+2025-09-03 17:49:16,959 - utils - INFO - Step 4: Translating to multiple languages
+2025-09-03 17:49:16,960 - utils - INFO - Step 5: Sending to Telegram
+2025-09-03 17:49:17,132 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-03 17:49:17,346 - root - INFO - Collection found or created: Collection(name=short_term)
+2025-09-03 17:49:17,502 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-03 17:49:17,693 - root - INFO - Collection found or created: Collection(name=entities)
+2025-09-03 17:49:17,696 - utils - INFO - Executing CrewAI workflow
+2025-09-03 17:49:17,733 - LiteLLM - INFO - 
+LiteLLM completion() model= gpt-4o-mini; provider = openai
+2025-09-03 17:49:18,467 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-09-03 17:49:18,468 - openai._base_client - INFO - Retrying request to /chat/completions in 0.411929 seconds
+2025-09-03 17:49:19,570 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-09-03 17:49:19,570 - openai._base_client - INFO - Retrying request to /chat/completions in 0.913744 seconds
+2025-09-03 17:49:20,809 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-09-03 17:49:20,835 - utils - ERROR - Error in daily summary workflow: litellm.RateLimitError: RateLimitError: OpenAIException - You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.
+2025-09-03 17:49:20,835 - __main__ - ERROR - Market summary generation failed: litellm.RateLimitError: RateLimitError: OpenAIException - You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.
+2025-09-03 17:49:20,835 - __main__ - ERROR - Full traceback:
+Traceback (most recent call last):
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\openai\openai.py", line 725, in completion
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\openai\openai.py", line 653, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 149, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\openai\openai.py", line 471, in make_sync_openai_chat_completion_request
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\openai\openai.py", line 453, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\openai\_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\openai\_utils\_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1147, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<46 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\openai\_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\openai\_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.RateLimitError: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\main.py", line 1966, in completion
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\main.py", line 1939, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<15 lines>...
+        custom_llm_provider=custom_llm_provider,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\openai\openai.py", line 736, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\run_market_summary.py", line 40, in run_summary
+    result = crew.run_daily_summary()
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\market_summary_crew.py", line 120, in run_daily_summary
+    result = crew.kickoff()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\crew.py", line 658, in kickoff
+    self._handle_crew_planning()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\crew.py", line 736, in _handle_crew_planning
+    )._handle_crew_planning()
+      ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\utilities\planning_handler.py", line 46, in _handle_crew_planning
+    result = planner_task.execute_sync()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 382, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 530, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 446, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 475, in execute_task
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 451, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 547, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 114, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 208, in _invoke_loop
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 154, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<3 lines>...
+        from_task=self.task
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\utilities\agent_utils.py", line 160, in get_llm_response
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\utilities\agent_utils.py", line 153, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<2 lines>...
+        from_agent=from_agent,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\llm.py", line 1030, in call
+    return self._handle_non_streaming_response(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        params, callbacks, available_functions, from_task, from_agent
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\llm.py", line 813, in _handle_non_streaming_response
+    response = litellm.completion(**params)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\utils.py", line 1330, in wrapper
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\utils.py", line 1205, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\main.py", line 3427, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2301, in exception_type
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 329, in exception_type
+    raise RateLimitError(
+    ...<4 lines>...
+    )
+litellm.exceptions.RateLimitError: litellm.RateLimitError: RateLimitError: OpenAIException - You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.
+2025-09-03 17:52:33,349 - __main__ - INFO - ==================================================
+2025-09-03 17:52:33,349 - __main__ - INFO - Starting Daily Market Summary Generation
+2025-09-03 17:52:33,349 - __main__ - INFO - Timestamp: 2025-09-03 17:52:33.349617
+2025-09-03 17:52:33,349 - __main__ - INFO - ==================================================
+2025-09-03 17:52:33,711 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
+2025-09-03 17:52:33,711 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
+2025-09-03 17:52:33,711 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansArabic-Regular.ttf
+2025-09-03 17:52:33,711 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansHebrew-Regular.ttf
+2025-09-03 17:52:33,712 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf
+2025-09-03 17:52:33,716 - utils - WARNING - crewai_tools.BaseTool not available; skipping tool attachment to agents.
+2025-09-03 17:52:33,716 - utils - INFO - Market Summary Crew initialized successfully
+2025-09-03 17:52:33,716 - utils - INFO - Starting daily market summary generation
+2025-09-03 17:52:33,717 - utils - INFO - Step 1: Searching for financial news
+2025-09-03 17:52:33,717 - utils - INFO - Step 2: Creating market summary
+2025-09-03 17:52:33,717 - utils - INFO - Step 3: Formatting with visual elements
+2025-09-03 17:52:33,717 - utils - INFO - Step 4: Translating to multiple languages
+2025-09-03 17:52:33,718 - utils - INFO - Step 5: Sending to Telegram
+2025-09-03 17:52:33,723 - utils - INFO - Executing CrewAI workflow
+2025-09-03 17:52:33,775 - utils - ERROR - Error in daily summary workflow: litellm.BadRequestError: LLM Provider NOT provided. Pass in the LLM provider you are trying to call. You passed model=llama-3.1-70b-versatile
+ Pass model as E.g. For 'Huggingface' inference endpoints pass in `completion(model='huggingface/starcoder',..)` Learn more: https://docs.litellm.ai/docs/providers
+2025-09-03 17:52:33,775 - __main__ - ERROR - Market summary generation failed: litellm.BadRequestError: LLM Provider NOT provided. Pass in the LLM provider you are trying to call. You passed model=llama-3.1-70b-versatile
+ Pass model as E.g. For 'Huggingface' inference endpoints pass in `completion(model='huggingface/starcoder',..)` Learn more: https://docs.litellm.ai/docs/providers
+2025-09-03 17:52:33,775 - __main__ - ERROR - Full traceback:
+Traceback (most recent call last):
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\run_market_summary.py", line 40, in run_summary
+    result = crew.run_daily_summary()
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\market_summary_crew.py", line 123, in run_daily_summary
+    result = crew.kickoff()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\crew.py", line 661, in kickoff
+    result = self._run_sequential_process()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\crew.py", line 772, in _run_sequential_process
+    return self._execute_tasks(self.tasks)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\crew.py", line 875, in _execute_tasks
+    task_output = task.execute_sync(
+        agent=agent_to_use,
+        context=context,
+        tools=cast(List[BaseTool], tools_for_task),
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 382, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 530, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 446, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 475, in execute_task
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 451, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 547, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 114, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 208, in _invoke_loop
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 154, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<3 lines>...
+        from_task=self.task
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\utilities\agent_utils.py", line 160, in get_llm_response
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\utilities\agent_utils.py", line 153, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<2 lines>...
+        from_agent=from_agent,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\llm.py", line 1030, in call
+    return self._handle_non_streaming_response(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        params, callbacks, available_functions, from_task, from_agent
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\llm.py", line 813, in _handle_non_streaming_response
+    response = litellm.completion(**params)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\utils.py", line 1330, in wrapper
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\utils.py", line 1205, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\main.py", line 3427, in completion
+    raise exception_type(
+    ...<5 lines>...
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\main.py", line 1097, in completion
+    model, custom_llm_provider, dynamic_api_key, api_base = get_llm_provider(
+                                                            ~~~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        api_key=api_key,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\litellm_core_utils\get_llm_provider_logic.py", line 391, in get_llm_provider
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\litellm_core_utils\get_llm_provider_logic.py", line 368, in get_llm_provider
+    raise litellm.exceptions.BadRequestError(  # type: ignore
+    ...<8 lines>...
+    )
+litellm.exceptions.BadRequestError: litellm.BadRequestError: LLM Provider NOT provided. Pass in the LLM provider you are trying to call. You passed model=llama-3.1-70b-versatile
+ Pass model as E.g. For 'Huggingface' inference endpoints pass in `completion(model='huggingface/starcoder',..)` Learn more: https://docs.litellm.ai/docs/providers
+2025-09-03 17:53:24,192 - __main__ - INFO - ==================================================
+2025-09-03 17:53:24,193 - __main__ - INFO - Starting Daily Market Summary Generation
+2025-09-03 17:53:24,193 - __main__ - INFO - Timestamp: 2025-09-03 17:53:24.193165
+2025-09-03 17:53:24,193 - __main__ - INFO - ==================================================
+2025-09-03 17:53:24,557 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
+2025-09-03 17:53:24,557 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
+2025-09-03 17:53:24,557 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansArabic-Regular.ttf
+2025-09-03 17:53:24,557 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansHebrew-Regular.ttf
+2025-09-03 17:53:24,557 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf
+2025-09-03 17:53:24,562 - utils - WARNING - crewai_tools.BaseTool not available; skipping tool attachment to agents.
+2025-09-03 17:53:24,562 - utils - INFO - Market Summary Crew initialized successfully
+2025-09-03 17:53:24,562 - utils - INFO - Starting daily market summary generation
+2025-09-03 17:53:24,562 - utils - INFO - Step 1: Searching for financial news
+2025-09-03 17:53:24,562 - utils - INFO - Step 2: Creating market summary
+2025-09-03 17:53:24,562 - utils - INFO - Step 3: Formatting with visual elements
+2025-09-03 17:53:24,563 - utils - INFO - Step 4: Translating to multiple languages
+2025-09-03 17:53:24,563 - utils - INFO - Step 5: Sending to Telegram
+2025-09-03 17:53:24,568 - utils - INFO - Executing CrewAI workflow
+2025-09-03 17:53:24,611 - utils - ERROR - Error in daily summary workflow: litellm.BadRequestError: LLM Provider NOT provided. Pass in the LLM provider you are trying to call. You passed model=llama-3.1-70b-versatile
+ Pass model as E.g. For 'Huggingface' inference endpoints pass in `completion(model='huggingface/starcoder',..)` Learn more: https://docs.litellm.ai/docs/providers
+2025-09-03 17:53:24,611 - __main__ - ERROR - Market summary generation failed: litellm.BadRequestError: LLM Provider NOT provided. Pass in the LLM provider you are trying to call. You passed model=llama-3.1-70b-versatile
+ Pass model as E.g. For 'Huggingface' inference endpoints pass in `completion(model='huggingface/starcoder',..)` Learn more: https://docs.litellm.ai/docs/providers
+2025-09-03 17:53:24,611 - __main__ - ERROR - Full traceback:
+Traceback (most recent call last):
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\run_market_summary.py", line 40, in run_summary
+    result = crew.run_daily_summary()
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\market_summary_crew.py", line 123, in run_daily_summary
+    result = crew.kickoff()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\crew.py", line 661, in kickoff
+    result = self._run_sequential_process()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\crew.py", line 772, in _run_sequential_process
+    return self._execute_tasks(self.tasks)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\crew.py", line 875, in _execute_tasks
+    task_output = task.execute_sync(
+        agent=agent_to_use,
+        context=context,
+        tools=cast(List[BaseTool], tools_for_task),
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 382, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 530, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 446, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 475, in execute_task
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 451, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 547, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 114, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 208, in _invoke_loop
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 154, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<3 lines>...
+        from_task=self.task
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\utilities\agent_utils.py", line 160, in get_llm_response
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\utilities\agent_utils.py", line 153, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<2 lines>...
+        from_agent=from_agent,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\llm.py", line 1030, in call
+    return self._handle_non_streaming_response(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        params, callbacks, available_functions, from_task, from_agent
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\llm.py", line 813, in _handle_non_streaming_response
+    response = litellm.completion(**params)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\utils.py", line 1330, in wrapper
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\utils.py", line 1205, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\main.py", line 3427, in completion
+    raise exception_type(
+    ...<5 lines>...
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\main.py", line 1097, in completion
+    model, custom_llm_provider, dynamic_api_key, api_base = get_llm_provider(
+                                                            ~~~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        api_key=api_key,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\litellm_core_utils\get_llm_provider_logic.py", line 391, in get_llm_provider
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\litellm_core_utils\get_llm_provider_logic.py", line 368, in get_llm_provider
+    raise litellm.exceptions.BadRequestError(  # type: ignore
+    ...<8 lines>...
+    )
+litellm.exceptions.BadRequestError: litellm.BadRequestError: LLM Provider NOT provided. Pass in the LLM provider you are trying to call. You passed model=llama-3.1-70b-versatile
+ Pass model as E.g. For 'Huggingface' inference endpoints pass in `completion(model='huggingface/starcoder',..)` Learn more: https://docs.litellm.ai/docs/providers
+2025-09-03 17:55:43,425 - __main__ - INFO - ==================================================
+2025-09-03 17:55:43,425 - __main__ - INFO - Starting Daily Market Summary Generation
+2025-09-03 17:55:43,425 - __main__ - INFO - Timestamp: 2025-09-03 17:55:43.425789
+2025-09-03 17:55:43,425 - __main__ - INFO - ==================================================
+2025-09-03 17:55:43,426 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
+2025-09-03 17:55:43,426 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
+2025-09-03 17:55:43,426 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansArabic-Regular.ttf
+2025-09-03 17:55:43,426 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansHebrew-Regular.ttf
+2025-09-03 17:55:43,426 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf
+2025-09-03 17:55:43,429 - utils - WARNING - crewai_tools.BaseTool not available; skipping tool attachment to agents.
+2025-09-03 17:55:43,429 - utils - INFO - Market Summary Crew initialized successfully
+2025-09-03 17:55:43,429 - utils - INFO - Starting daily market summary generation
+2025-09-03 17:55:43,429 - utils - INFO - Step 1: Searching for financial news
+2025-09-03 17:55:43,429 - utils - INFO - Step 2: Creating market summary
+2025-09-03 17:55:43,430 - utils - INFO - Step 3: Formatting with visual elements
+2025-09-03 17:55:43,430 - utils - INFO - Step 4: Translating to multiple languages
+2025-09-03 17:55:43,430 - utils - INFO - Step 5: Sending to Telegram
+2025-09-03 17:55:43,434 - utils - INFO - Executing CrewAI workflow
+2025-09-03 17:55:43,466 - LiteLLM - INFO - 
+LiteLLM completion() model= llama-3.1-70b-versatile; provider = groq
+2025-09-03 17:55:43,766 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-09-03 17:55:43,822 - utils - ERROR - Error in daily summary workflow: litellm.BadRequestError: GroqException - {"error":{"message":"The model `llama-3.1-70b-versatile` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+2025-09-03 17:55:43,822 - __main__ - ERROR - Market summary generation failed: litellm.BadRequestError: GroqException - {"error":{"message":"The model `llama-3.1-70b-versatile` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+2025-09-03 17:55:43,822 - __main__ - ERROR - Full traceback:
+Traceback (most recent call last):
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 174, in _make_common_sync_call
+    response = sync_httpx_client.post(
+        url=api_base,
+    ...<8 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 780, in post
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 762, in post
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '400 Bad Request' for url 'https://api.groq.com/openai/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\main.py", line 1824, in completion
+    response = base_llm_http_handler.completion(
+        model=model,
+    ...<13 lines>...
+        client=client,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 470, in completion
+    response = self._make_common_sync_call(
+        sync_httpx_client=sync_httpx_client,
+    ...<7 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 199, in _make_common_sync_call
+    raise self._handle_error(e=e, provider_config=provider_config)
+          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 2409, in _handle_error
+    raise provider_config.get_error_class(
+    ...<3 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: {"error":{"message":"The model `llama-3.1-70b-versatile` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\run_market_summary.py", line 40, in run_summary
+    result = crew.run_daily_summary()
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\market_summary_crew.py", line 123, in run_daily_summary
+    result = crew.kickoff()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\crew.py", line 661, in kickoff
+    result = self._run_sequential_process()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\crew.py", line 772, in _run_sequential_process
+    return self._execute_tasks(self.tasks)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\crew.py", line 875, in _execute_tasks
+    task_output = task.execute_sync(
+        agent=agent_to_use,
+        context=context,
+        tools=cast(List[BaseTool], tools_for_task),
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 382, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 530, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 446, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 475, in execute_task
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 451, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 547, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 114, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 208, in _invoke_loop
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 154, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<3 lines>...
+        from_task=self.task
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\utilities\agent_utils.py", line 160, in get_llm_response
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\utilities\agent_utils.py", line 153, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<2 lines>...
+        from_agent=from_agent,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\llm.py", line 1030, in call
+    return self._handle_non_streaming_response(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        params, callbacks, available_functions, from_task, from_agent
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\llm.py", line 813, in _handle_non_streaming_response
+    response = litellm.completion(**params)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\utils.py", line 1330, in wrapper
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\utils.py", line 1205, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\main.py", line 3427, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2301, in exception_type
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 391, in exception_type
+    raise BadRequestError(
+    ...<6 lines>...
+    )
+litellm.exceptions.BadRequestError: litellm.BadRequestError: GroqException - {"error":{"message":"The model `llama-3.1-70b-versatile` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+
+2025-09-03 17:56:50,798 - __main__ - INFO - ==================================================
+2025-09-03 17:56:50,798 - __main__ - INFO - Starting Daily Market Summary Generation
+2025-09-03 17:56:50,799 - __main__ - INFO - Timestamp: 2025-09-03 17:56:50.799178
+2025-09-03 17:56:50,799 - __main__ - INFO - ==================================================
+2025-09-03 17:56:50,799 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
+2025-09-03 17:56:50,799 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
+2025-09-03 17:56:50,800 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansArabic-Regular.ttf
+2025-09-03 17:56:50,800 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansHebrew-Regular.ttf
+2025-09-03 17:56:50,800 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf
+2025-09-03 17:56:50,803 - utils - WARNING - crewai_tools.BaseTool not available; skipping tool attachment to agents.
+2025-09-03 17:56:50,803 - utils - INFO - Market Summary Crew initialized successfully
+2025-09-03 17:56:50,803 - utils - INFO - Starting daily market summary generation
+2025-09-03 17:56:50,804 - utils - INFO - Step 1: Searching for financial news
+2025-09-03 17:56:50,804 - utils - INFO - Step 2: Creating market summary
+2025-09-03 17:56:50,804 - utils - INFO - Step 3: Formatting with visual elements
+2025-09-03 17:56:50,804 - utils - INFO - Step 4: Translating to multiple languages
+2025-09-03 17:56:50,804 - utils - INFO - Step 5: Sending to Telegram
+2025-09-03 17:56:50,809 - utils - INFO - Executing CrewAI workflow
+2025-09-03 17:56:50,835 - LiteLLM - INFO - 
+LiteLLM completion() model= llama-3.3-70b-versatile; provider = groq
+2025-09-03 17:57:52,489 - __main__ - INFO - ==================================================
+2025-09-03 17:57:52,490 - __main__ - INFO - Starting Daily Market Summary Generation
+2025-09-03 17:57:52,490 - __main__ - INFO - Timestamp: 2025-09-03 17:57:52.490185
+2025-09-03 17:57:52,490 - __main__ - INFO - ==================================================
+2025-09-03 17:57:52,490 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
+2025-09-03 17:57:52,490 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
+2025-09-03 17:57:52,490 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansArabic-Regular.ttf
+2025-09-03 17:57:52,490 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansHebrew-Regular.ttf
+2025-09-03 17:57:52,490 - pdf_generator - WARNING - Font not found: /usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf
+2025-09-03 17:57:52,493 - utils - WARNING - crewai_tools.BaseTool not available; skipping tool attachment to agents.
+2025-09-03 17:57:52,493 - utils - INFO - Market Summary Crew initialized successfully
+2025-09-03 17:57:52,493 - utils - INFO - Starting daily market summary generation
+2025-09-03 17:57:52,494 - utils - INFO - Step 1: Searching for financial news
+2025-09-03 17:57:52,494 - utils - INFO - Step 2: Creating market summary
+2025-09-03 17:57:52,494 - utils - INFO - Step 3: Formatting with visual elements
+2025-09-03 17:57:52,494 - utils - INFO - Step 4: Translating to multiple languages
+2025-09-03 17:57:52,494 - utils - INFO - Step 5: Sending to Telegram
+2025-09-03 17:57:52,498 - utils - INFO - Executing CrewAI workflow
+2025-09-03 17:57:52,523 - LiteLLM - INFO - 
+LiteLLM completion() model= llama-3.3-70b-versatile; provider = groq
+2025-09-03 17:57:55,679 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-03 17:57:55,680 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-09-03 17:57:55,709 - LiteLLM - INFO - 
+LiteLLM completion() model= llama-3.3-70b-versatile; provider = groq
+2025-09-03 17:57:57,346 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-03 17:57:57,349 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-09-03 17:57:57,382 - LiteLLM - INFO - 
+LiteLLM completion() model= llama-3.3-70b-versatile; provider = groq
+2025-09-03 17:57:58,869 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-03 17:57:58,871 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-09-03 17:57:58,905 - LiteLLM - INFO - 
+LiteLLM completion() model= llama-3.3-70b-versatile; provider = groq
+2025-09-03 17:58:03,255 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-03 17:58:03,257 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-09-03 17:58:03,289 - LiteLLM - INFO - 
+LiteLLM completion() model= llama-3.3-70b-versatile; provider = groq
+2025-09-03 17:58:07,705 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-03 17:58:07,708 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-09-03 17:58:07,741 - LiteLLM - INFO - 
+LiteLLM completion() model= llama-3.3-70b-versatile; provider = groq
+2025-09-03 17:58:19,038 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-03 17:58:19,039 - LiteLLM - INFO - Wrapper: Completed Call, calling success_handler
+2025-09-03 17:58:19,069 - LiteLLM - INFO - 
+LiteLLM completion() model= llama-3.3-70b-versatile; provider = groq
+2025-09-03 17:58:19,158 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2025-09-03 17:58:19,177 - utils - ERROR - Error in daily summary workflow: litellm.RateLimitError: RateLimitError: GroqException - {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k470b6fffwhbgbkgj9nqc0cz` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Used 9949, Requested 6003. Please try again in 19.757s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+2025-09-03 17:58:19,178 - __main__ - ERROR - Market summary generation failed: litellm.RateLimitError: RateLimitError: GroqException - {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k470b6fffwhbgbkgj9nqc0cz` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Used 9949, Requested 6003. Please try again in 19.757s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+2025-09-03 17:58:19,178 - __main__ - ERROR - Full traceback:
+Traceback (most recent call last):
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 174, in _make_common_sync_call
+    response = sync_httpx_client.post(
+        url=api_base,
+    ...<8 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 780, in post
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\custom_httpx\http_handler.py", line 762, in post
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '429 Too Many Requests' for url 'https://api.groq.com/openai/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\main.py", line 1824, in completion
+    response = base_llm_http_handler.completion(
+        model=model,
+    ...<13 lines>...
+        client=client,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 470, in completion
+    response = self._make_common_sync_call(
+        sync_httpx_client=sync_httpx_client,
+    ...<7 lines>...
+        logging_obj=logging_obj,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 199, in _make_common_sync_call
+    raise self._handle_error(e=e, provider_config=provider_config)
+          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\llms\custom_httpx\llm_http_handler.py", line 2409, in _handle_error
+    raise provider_config.get_error_class(
+    ...<3 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k470b6fffwhbgbkgj9nqc0cz` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Used 9949, Requested 6003. Please try again in 19.757s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\run_market_summary.py", line 40, in run_summary
+    result = crew.run_daily_summary()
+  File "C:\Users\AI\Desktop\CrowdWisdomTrading AI Agent\market_summary_crew.py", line 117, in run_daily_summary
+    result = crew.kickoff()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\crew.py", line 661, in kickoff
+    result = self._run_sequential_process()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\crew.py", line 772, in _run_sequential_process
+    return self._execute_tasks(self.tasks)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\crew.py", line 875, in _execute_tasks
+    task_output = task.execute_sync(
+        agent=agent_to_use,
+        context=context,
+        tools=cast(List[BaseTool], tools_for_task),
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 382, in execute_sync
+    return self._execute_core(agent, context, tools)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 530, in _execute_core
+    raise e  # Re-raise the exception after emitting the event
+    ^^^^^^^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\task.py", line 446, in _execute_core
+    result = agent.execute_task(
+        task=self,
+        context=context,
+        tools=tools,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 475, in execute_task
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 451, in execute_task
+    result = self._execute_without_timeout(task_prompt, task)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agent.py", line 547, in _execute_without_timeout
+    return self.agent_executor.invoke(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        {
+        ^
+    ...<4 lines>...
+        }
+        ^
+    )["output"]
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 114, in invoke
+    formatted_answer = self._invoke_loop()
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 208, in _invoke_loop
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\agents\crew_agent_executor.py", line 154, in _invoke_loop
+    answer = get_llm_response(
+        llm=self.llm,
+    ...<3 lines>...
+        from_task=self.task
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\utilities\agent_utils.py", line 160, in get_llm_response
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\utilities\agent_utils.py", line 153, in get_llm_response
+    answer = llm.call(
+        messages,
+    ...<2 lines>...
+        from_agent=from_agent,
+    )
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\llm.py", line 1030, in call
+    return self._handle_non_streaming_response(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        params, callbacks, available_functions, from_task, from_agent
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\crewai\llm.py", line 813, in _handle_non_streaming_response
+    response = litellm.completion(**params)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\utils.py", line 1330, in wrapper
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\utils.py", line 1205, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\main.py", line 3427, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2301, in exception_type
+    raise e
+  File "C:\Users\AI\AppData\Local\Programs\Python\Python313\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 329, in exception_type
+    raise RateLimitError(
+    ...<4 lines>...
+    )
+litellm.exceptions.RateLimitError: litellm.RateLimitError: RateLimitError: GroqException - {"error":{"message":"Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k470b6fffwhbgbkgj9nqc0cz` service tier `on_demand` on tokens per minute (TPM): Limit 12000, Used 9949, Requested 6003. Please try again in 19.757s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+

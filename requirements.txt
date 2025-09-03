@@ -1,6 +1,7 @@
 # Core AI and CrewAI framework
 crewai>=0.175.0
 litellm>=1.0.0
+langchain-groq>=0.1.0
 
 # Search and data APIs
 tavily-python>=0.3.0

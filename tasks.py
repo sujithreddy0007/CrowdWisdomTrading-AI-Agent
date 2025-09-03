@@ -176,7 +176,7 @@ class MarketTasks:
             output_file=f"summary_{language}.md"
         )
     
-    def create_send_task(self, send_agent, content_dict):
+    def create_send_task(self, send_agent, formatted_task, translation_tasks: List):
         """Create task for sending content to Telegram"""
         return Task(
             description=f"""
@@ -218,7 +218,7 @@ class MarketTasks:
             """,
             agent=send_agent,
             tools=[],  # Will be populated with Telegram tools
-            context=[content_dict],
+            context=[formatted_task] + translation_tasks,
             output_file="delivery_report.json"
         )
     
