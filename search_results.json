@@ -2,111 +2,115 @@
     "search_results": [
         {
             "title": "US Stock Market Closes Higher as Investors Await Fed Decision",
-            "content": "The Dow Jones Industrial Average rose 120 points, or 0.4%, to 34,640. The S&P 500 gained 0.5% to 4,300, while the NASDAQ Composite climbed 0.7% to 13,400. Investors are awaiting the Federal Reserve's interest rate decision, expected later today.",
+            "content": "The Dow Jones Industrial Average rose 120 points, or 0.4%, to 34,560. The S&P 500 gained 0.5% to 4,530, and the NASDAQ Composite climbed 0.7% to 14,440. Investors are awaiting the Federal Reserve's interest rate decision, expected to be announced at 2 pm ET.",
             "source": "CNBC",
-            "timestamp": "2024-09-16T14:30:00Z"
+            "timestamp": "2024-09-16T14:30:00"
         },
         {
             "title": "Federal Reserve Keeps Interest Rates Unchanged, Cites Economic Uncertainty",
-            "content": "The Federal Reserve has decided to keep interest rates unchanged, citing ongoing economic uncertainty. The decision was made during the Fed's two-day policy meeting, which concluded today.",
+            "content": "The Federal Reserve has decided to keep interest rates unchanged, citing ongoing economic uncertainty and inflation concerns. The decision was announced at 2 pm ET, and the Fed will provide further guidance on its monetary policy stance.",
             "source": "Bloomberg",
-            "timestamp": "2024-09-16T18:00:00Z"
+            "timestamp": "2024-09-16T14:45:00"
         },
         {
             "title": "S&P 500 and NASDAQ Reach New Highs as Tech Stocks Surge",
-            "content": "The S&P 500 and NASDAQ Composite have reached new highs, driven by a surge in tech stocks. The Dow Jones Industrial Average also rose, but at a slower pace.",
-            "source": "The Wall Street Journal",
-            "timestamp": "2024-09-16T20:00:00Z"
+            "content": "The S&P 500 and NASDAQ Composite have reached new highs, driven by a surge in tech stocks. The S&P 500 gained 1.2% to 4,550, while the NASDAQ Composite climbed 1.5% to 14,520. Apple, Amazon, and Microsoft were among the top performers.",
+            "source": "Reuters",
+            "timestamp": "2024-09-16T16:00:00"
         },
         {
             "title": "Major Earnings Announcements: Apple, Amazon, and Microsoft Report Strong Results",
-            "content": "Apple, Amazon, and Microsoft have reported strong earnings results, beating analyst expectations. The tech giants' results have boosted investor confidence and driven the market higher.",
-            "source": "Reuters",
-            "timestamp": "2024-09-16T21:00:00Z"
+            "content": "Apple, Amazon, and Microsoft have reported strong earnings results, beating analyst expectations. Apple's revenue rose 10% to $90 billion, while Amazon's revenue climbed 15% to $130 billion. Microsoft's revenue gained 12% to $50 billion.",
+            "source": "The Wall Street Journal",
+            "timestamp": "2024-09-16T17:00:00"
         },
         {
             "title": "Economic Indicators: US GDP Growth Slows to 2.1% in Q2",
-            "content": "The US GDP growth has slowed to 2.1% in the second quarter, according to the Commerce Department. The slowdown is attributed to a decline in business investment and a rise in trade tensions.",
+            "content": "The US GDP growth has slowed to 2.1% in the second quarter, down from 2.5% in the first quarter. The slowdown was driven by a decline in consumer spending and business investment.",
             "source": "The New York Times",
-            "timestamp": "2024-09-16T22:00:00Z"
+            "timestamp": "2024-09-16T18:00:00"
         }
     ],
     "market_data": {
         "Dow Jones": {
-            "close": 34640,
+            "close": 34560,
             "change": 120,
             "percent_change": 0.4
         },
         "S&P 500": {
-            "close": 4300,
-            "change": 20,
+            "close": 4530,
+            "change": 22,
             "percent_change": 0.5
         },
         "NASDAQ": {
-            "close": 13400,
-            "change": 90,
+            "close": 14440,
+            "change": 100,
             "percent_change": 0.7
         },
-        "USD": {
-            "eur": 0.88,
-            "gbp": 0.76,
-            "jpy": 108.50
+        "US Dollar Index": {
+            "close": 95.50,
+            "change": -0.20,
+            "percent_change": -0.2
         },
-        "Commodities": {
-            "oil": 65.20,
-            "gold": 1500,
-            "silver": 18.50
+        "Oil Prices": {
+            "close": 70.50,
+            "change": 0.50,
+            "percent_change": 0.7
         },
-        "Bonds": {
-            "10-year_treasury": 1.80,
-            "30-year_treasury": 2.20
+        "Gold Prices": {
+            "close": 1500,
+            "change": 10,
+            "percent_change": 0.7
         }
     },
     "economic_news": {
-        "GDP_growth": 2.1,
-        "inflation_rate": 2.5,
-        "unemployment_rate": 3.7,
-        "interest_rates": 1.75
+        "Federal Reserve": {
+            "interest_rate": 2.5,
+            "decision": "No change"
+        },
+        "GDP Growth": {
+            "Q2": 2.1,
+            "Q1": 2.5
+        },
+        "Inflation Rate": {
+            "August": 2.5,
+            "July": 2.3
+        }
     },
     "corporate_news": {
         "Apple": {
-            "earnings": 2.50,
-            "revenue": 50.00
+            "revenue": 90,
+            "earnings_per_share": 2.50
         },
         "Amazon": {
-            "earnings": 5.00,
-            "revenue": 75.00
+            "revenue": 130,
+            "earnings_per_share": 5.00
         },
         "Microsoft": {
-            "earnings": 2.00,
-            "revenue": 40.00
+            "revenue": 50,
+            "earnings_per_share": 1.50
         }
     },
     "sources": [
         {
             "name": "CNBC",
-            "credibility_rating": 9,
-            "url": "https://www.cnbc.com"
+            "credibility_rating": 9
         },
         {
             "name": "Bloomberg",
-            "credibility_rating": 9,
-            "url": "https://www.bloomberg.com"
-        },
-        {
-            "name": "The Wall Street Journal",
-            "credibility_rating": 9,
-            "url": "https://www.wsj.com"
+            "credibility_rating": 9
         },
         {
             "name": "Reuters",
-            "credibility_rating": 8,
-            "url": "https://www.reuters.com"
+            "credibility_rating": 8
+        },
+        {
+            "name": "The Wall Street Journal",
+            "credibility_rating": 9
         },
         {
             "name": "The New York Times",
-            "credibility_rating": 9,
-            "url": "https://www.nytimes.com"
+            "credibility_rating": 8
         }
     ]
 }

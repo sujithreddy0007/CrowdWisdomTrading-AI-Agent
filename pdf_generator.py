@@ -1,295 +1,213 @@
-from reportlab.lib.pagesizes import letter, A4
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, PageBreak
-from reportlab.platypus.tableofcontents import TableOfContents
+# pdf_generator.py (TYPO FIXED)
+
+import os
+import re
+import logging
+from datetime import datetime
+from typing import Dict, List
+import requests
+from PIL import Image as PILImage
+from io import BytesIO
+
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.units import inch
-from reportlab.lib import colors
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_RIGHT, TA_JUSTIFY
-from datetime import datetime
-import os
-import logging
-from typing import Dict, List
-from config import Config
+from reportlab.lib.enums import TA_CENTER, TA_RIGHT, TA_LEFT
+from reportlab.lib.units import inch
+from reportlab.lib.colors import HexColor
 
+# Setup logging
 logger = logging.getLogger(__name__)
 
+# Define colors
+PRIMARY_COLOR = HexColor("#1a73e8")
+TEXT_COLOR = HexColor("#202124")
+GRAY_COLOR = HexColor("#5f6368")
+
 class PDFGenerator:
-    def __init__(self):
-        self.styles = getSampleStyleSheet()
-        self.setup_fonts()
-        self.setup_custom_styles()
-    
-    def setup_fonts(self):
-        """Setup fonts for different languages"""
-        try:
-            # Try to register system fonts for better language support
-            # These paths might need adjustment based on the system
-            font_paths = {
-                'DejaVuSans': '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',
-                'DejaVuSans-Bold': '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',
-                'NotoSansArabic': '/usr/share/fonts/truetype/noto/NotoSansArabic-Regular.ttf',
-                'NotoSansHebrew': '/usr/share/fonts/truetype/noto/NotoSansHebrew-Regular.ttf',
-                'NotoSansDevanagari': '/usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf'
-            }
-            
-            for font_name, font_path in font_paths.items():
-                if os.path.exists(font_path):
-                    pdfmetrics.registerFont(TTFont(font_name, font_path))
-                    logger.info(f"Registered font: {font_name}")
+    def __init__(self, output_dir: str = "output"):
+        self.output_dir = output_dir
+        self.temp_image_paths = []
+        self._register_fonts()
+        self.styles = self._create_styles()
+        os.makedirs(self.output_dir, exist_ok=True)
+
+    def _register_fonts(self):
+        """Register fonts needed for multilingual support."""
+        font_map = {
+            'NotoSansArabic': 'fonts/NotoSansArabic-Regular.ttf',
+            'NotoSansHebrew': 'fonts/NotoSansHebrew-Regular.ttf',
+            'NotoSansDevanagari': 'fonts/NotoSansDevanagari-Regular.ttf'
+        }
+        for name, path in font_map.items():
+            try:
+                if os.path.exists(path):
+                    pdfmetrics.registerFont(TTFont(name, path))
                 else:
-                    logger.warning(f"Font not found: {font_path}")
-                    
-        except Exception as e:
-            logger.warning(f"Font setup failed, using default fonts: {e}")
-    
-    def setup_custom_styles(self):
-        """Setup custom paragraph styles"""
-        # Title style
-        self.styles.add(ParagraphStyle(
-            name='CustomTitle',
-            parent=self.styles['Title'],
+                    raise FileNotFoundError
+            except Exception:
+                logger.warning(
+                    f"Font not found: {path}. "
+                    f"Please download it and place it in the '{os.path.dirname(path)}' directory "
+                    f"for proper {name.replace('NotoSans', '')} language support in the PDF."
+                )
+
+    def _create_styles(self) -> Dict:
+        """Create ParagraphStyle objects for the PDF."""
+        styles = getSampleStyleSheet()  # <-- TYPO FIXED HERE
+        styles.add(ParagraphStyle(
+            name='TitleStyle',
+            fontName='Helvetica-Bold',
             fontSize=24,
-            spaceAfter=30,
+            leading=28,
+            textColor=PRIMARY_COLOR,
             alignment=TA_CENTER,
-            textColor=colors.darkblue
+            spaceAfter=20
         ))
-        
-        # Subtitle style
-        self.styles.add(ParagraphStyle(
-            name='CustomSubtitle',
-            parent=self.styles['Heading1'],
-            fontSize=18,
-            spaceAfter=20,
-            alignment=TA_CENTER,
-            textColor=colors.darkblue
-        ))
-        
-        # Language header style
-        self.styles.add(ParagraphStyle(
-            name='LanguageHeader',
-            parent=self.styles['Heading2'],
+        styles.add(ParagraphStyle(
+            name='LangHeaderStyle',
+            fontName='Helvetica-Bold',
             fontSize=16,
-            spaceAfter=15,
+            leading=20,
+            textColor=TEXT_COLOR,
             spaceBefore=20,
-            textColor=colors.darkred,
-            borderWidth=1,
-            borderColor=colors.grey,
-            borderPadding=10
+            spaceAfter=10
         ))
-        
-        # Content style
-        self.styles.add(ParagraphStyle(
-            name='CustomContent',
-            parent=self.styles['Normal'],
-            fontSize=11,
-            spaceAfter=12,
-            alignment=TA_JUSTIFY,
-            leftIndent=0,
-            rightIndent=0
+        # Base body style for English
+        styles.add(ParagraphStyle(
+            name='BodyStyle',
+            fontName='Helvetica',
+            fontSize=10,
+            leading=14,
+            textColor=GRAY_COLOR,
+            spaceAfter=12
         ))
-        
-        # Arabic/Hebrew content style (right-to-left)
-        self.styles.add(ParagraphStyle(
-            name='RTLContent',
-            parent=self.styles['Normal'],
-            fontSize=11,
-            spaceAfter=12,
-            alignment=TA_RIGHT,
-            leftIndent=0,
-            rightIndent=0
+        # Styles for other languages, falling back to Helvetica if font is missing
+        styles.add(ParagraphStyle(
+            name='BodyStyle_ar',
+            parent=styles['BodyStyle'],
+            fontName='NotoSansArabic' if 'NotoSansArabic' in pdfmetrics.getRegisteredFontNames() else 'Helvetica',
+            alignment=TA_RIGHT
         ))
-        
-        # Footer style
-        self.styles.add(ParagraphStyle(
-            name='Footer',
-            parent=self.styles['Normal'],
-            fontSize=8,
-            alignment=TA_CENTER,
-            textColor=colors.grey
+        styles.add(ParagraphStyle(
+            name='BodyStyle_he',
+            parent=styles['BodyStyle'],
+            fontName='NotoSansHebrew' if 'NotoSansHebrew' in pdfmetrics.getRegisteredFontNames() else 'Helvetica',
+            alignment=TA_RIGHT
         ))
-    
-    def create_cover_page(self, story):
-        """Create cover page"""
-        # Title
-        title = Paragraph("Daily Market Summary", self.styles['CustomTitle'])
-        story.append(title)
-        story.append(Spacer(1, 0.5*inch))
-        
-        # Date
-        date_str = datetime.now().strftime("%B %d, %Y")
-        date_para = Paragraph(date_str, self.styles['CustomSubtitle'])
-        story.append(date_para)
-        story.append(Spacer(1, 0.3*inch))
-        
-        # Subtitle
-        subtitle = Paragraph("Comprehensive Financial Market Analysis", self.styles['CustomSubtitle'])
-        story.append(subtitle)
-        story.append(Spacer(1, 0.5*inch))
-        
-        # Description
-        description = """
-        This report provides a comprehensive analysis of the US financial markets, 
-        including major indices performance, sector analysis, economic indicators, 
-        and market outlook. The summary is presented in multiple languages for 
-        global accessibility.
-        """
-        desc_para = Paragraph(description, self.styles['CustomContent'])
-        story.append(desc_para)
-        story.append(Spacer(1, 0.5*inch))
-        
-        # Generated info
-        generated_info = f"Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}"
-        gen_para = Paragraph(generated_info, self.styles['Footer'])
-        story.append(gen_para)
-        
-        story.append(PageBreak())
-    
-    def create_table_of_contents(self, story):
-        """Create table of contents"""
-        toc_title = Paragraph("Table of Contents", self.styles['CustomSubtitle'])
-        story.append(toc_title)
-        story.append(Spacer(1, 0.3*inch))
-        
-        # TOC entries
-        toc_entries = [
-            ("English Summary", "english"),
-            ("Hindi Summary (हिंदी)", "hindi"),
-            ("Arabic Summary (العربية)", "arabic"),
-            ("Hebrew Summary (עברית)", "hebrew"),
-            ("Charts and Data", "charts")
-        ]
-        
-        for title, anchor in toc_entries:
-            toc_item = Paragraph(f"<a href='#{anchor}'>{title}</a>", self.styles['CustomContent'])
-            story.append(toc_item)
-            story.append(Spacer(1, 0.1*inch))
-        
-        story.append(PageBreak())
-    
-    def add_language_section(self, story, content, language, language_name):
-        """Add a language section to the PDF"""
-        # Language header
-        header = Paragraph(f"{language_name} Summary", self.styles['LanguageHeader'])
-        story.append(header)
-        
-        # Determine text direction
-        if language in ['ar', 'he']:
-            content_style = self.styles['RTLContent']
-        else:
-            content_style = self.styles['CustomContent']
-        
-        # Add content
-        if isinstance(content, str):
-            # Simple text content
-            content_para = Paragraph(content, content_style)
-            story.append(content_para)
-        elif isinstance(content, dict):
-            # Structured content with sections
-            for section, text in content.items():
-                if section != 'images':
-                    section_para = Paragraph(f"<b>{section}</b>", self.styles['Heading3'])
-                    story.append(section_para)
-                    story.append(Spacer(1, 0.1*inch))
-                    
-                    text_para = Paragraph(text, content_style)
-                    story.append(text_para)
-                    story.append(Spacer(1, 0.2*inch))
-        
-        story.append(Spacer(1, 0.3*inch))
-        story.append(PageBreak())
-    
-    def add_images_section(self, story, images_data):
-        """Add images and charts section"""
-        header = Paragraph("Charts and Visual Data", self.styles['LanguageHeader'])
-        story.append(header)
-        
-        if images_data:
-            for img_info in images_data:
-                if isinstance(img_info, dict) and 'path' in img_info:
-                    try:
-                        # Add image
-                        img = Image(img_info['path'], width=6*inch, height=4*inch)
-                        story.append(img)
-                        story.append(Spacer(1, 0.1*inch))
-                        
-                        # Add caption
-                        if 'caption' in img_info:
-                            caption = Paragraph(f"<i>{img_info['caption']}</i>", self.styles['Footer'])
-                            story.append(caption)
-                        
-                        story.append(Spacer(1, 0.2*inch))
-                        
-                    except Exception as e:
-                        logger.error(f"Failed to add image {img_info.get('path', 'unknown')}: {e}")
-                        error_para = Paragraph(f"Image unavailable: {img_info.get('caption', 'Chart')}", 
-                                             self.styles['Footer'])
-                        story.append(error_para)
-                        story.append(Spacer(1, 0.2*inch))
-    
-    def generate_pdf(self, content_dict: Dict, output_path: str = None):
-        """Generate the complete PDF document"""
-        if output_path is None:
-            output_path = os.path.join(Config.OUTPUT_DIR, Config.PDF_FILENAME)
-        
-        # Ensure output directory exists
-        os.makedirs(os.path.dirname(output_path), exist_ok=True)
-        
+        styles.add(ParagraphStyle(
+            name='BodyStyle_hi',
+            parent=styles['BodyStyle'],
+            fontName='NotoSansDevanagari' if 'NotoSansDevanagari' in pdfmetrics.getRegisteredFontNames() else 'Helvetica',
+            alignment=TA_LEFT
+        ))
+        return styles
+
+    def _fetch_image(self, url: str) -> Image:
+        """Fetch an image from a URL and prepare it for the PDF."""
         try:
-            # Create PDF document
-            doc = SimpleDocTemplate(
-                output_path,
-                pagesize=A4,
-                rightMargin=72,
-                leftMargin=72,
-                topMargin=72,
-                bottomMargin=18
-            )
-            
+            # Add a browser-like header to avoid being blocked
+            headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'}
+            response = requests.get(url, timeout=10, headers=headers) # <-- ADDED headers
+            response.raise_for_status()
+            img_data = BytesIO(response.content)
+
+            # Create a temporary file to save the image
+            ext = PILImage.open(img_data).format.lower()
+            temp_path = f"temp_image.{ext}"
+            with open(temp_path, "wb") as f:
+                f.write(img_data.getvalue())
+            self.temp_image_paths.append(temp_path)
+
+            # Create ReportLab Image, preserving aspect ratio
+            img = Image(temp_path, width=4*inch, height=3*inch, kind='proportional')
+            img.hAlign = 'CENTER'
+            return img
+        except Exception as e:
+            logger.error(f"Could not fetch or process image from {url}: {e}")
+            return None
+
+    def _parse_markdown(self, text: str, style: ParagraphStyle) -> List:
+        """Parse markdown text into a list of ReportLab Flowables."""
+        flowables = []
+        lines = text.split('\n')
+
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+
+            # Handle images: ![alt](url)
+            img_match = re.match(r'!\[.*?\]\((.*?)\)', line)
+            if img_match:
+                img_url = img_match.group(1)
+                img = self._fetch_image(img_url)
+                if img:
+                    flowables.append(img)
+                continue
+
+            # Handle headings: # Title
+            if line.startswith('# '):
+                heading_text = line[2:]
+                flowables.append(Paragraph(heading_text, self.styles['LangHeaderStyle']))
+                continue
+
+            # Handle bullet points: * point
+            if line.startswith('* '):
+                line = f"• {line[2:]}" # Replace markdown '*' with a bullet character
+
+            flowables.append(Paragraph(line, style))
+
+        return flowables
+
+    def generate_pdf(self, all_translations: Dict) -> str:
+        """Generate the PDF from the provided translations."""
+        try:
+            date_str = datetime.now().strftime("%Y-%m-%d")
+            file_path = os.path.join(self.output_dir, f"market_summary_{date_str}.pdf")
+
+            doc = SimpleDocTemplate(file_path, pagesize=(8.5 * inch, 11 * inch))
             story = []
-            
-            # Create cover page
-            self.create_cover_page(story)
-            
-            # Create table of contents
-            self.create_table_of_contents(story)
-            
-            # Add language sections
-            language_mapping = {
-                'en': 'English',
-                'hi': 'Hindi (हिंदी)',
-                'ar': 'Arabic (العربية)',
-                'he': 'Hebrew (עברית)'
+
+            # Add main title
+            story.append(Paragraph("Daily Market Summary", self.styles['TitleStyle']))
+            story.append(Spacer(1, 0.25 * inch))
+
+            language_map = {
+                'en': 'English', 'hi': 'Hindi', 'ar': 'Arabic', 'he': 'Hebrew'
             }
-            
-            for lang_code, lang_name in language_mapping.items():
-                if lang_code in content_dict:
-                    self.add_language_section(story, content_dict[lang_code], lang_code, lang_name)
-            
-            # Add images section
-            if 'images' in content_dict:
-                self.add_images_section(story, content_dict['images'])
-            
-            # Build PDF
+
+            for lang_code, text in all_translations.items():
+                if not text:
+                    continue
+
+                lang_name = language_map.get(lang_code, lang_code.upper())
+                story.append(Paragraph(f"Summary in {lang_name}", self.styles['LangHeaderStyle']))
+
+                body_style_name = f"BodyStyle_{lang_code}"
+                body_style = self.styles.get(body_style_name, self.styles['BodyStyle'])
+
+                # Parse markdown content
+                content_flowables = self._parse_markdown(text, body_style)
+                story.extend(content_flowables)
+                story.append(Spacer(1, 0.25 * inch))
+
             doc.build(story)
-            
-            logger.info(f"PDF generated successfully: {output_path}")
-            return output_path
-            
+            logger.info(f"Successfully generated PDF: {file_path}")
+            return file_path
         except Exception as e:
             logger.error(f"PDF generation failed: {e}")
             raise
-    
+        finally:
+            self.cleanup_temp_files()
+
     def cleanup_temp_files(self):
-        """Clean up temporary image files"""
-        try:
-            temp_dir = "temp_images"
-            if os.path.exists(temp_dir):
-                for file in os.listdir(temp_dir):
-                    file_path = os.path.join(temp_dir, file)
-                    if os.path.isfile(file_path):
-                        os.remove(file_path)
-                logger.info("Temporary files cleaned up")
-        except Exception as e:
-            logger.warning(f"Failed to cleanup temp files: {e}")
+        """Remove temporary image files."""
+        for path in self.temp_image_paths:
+            try:
+                if os.path.exists(path):
+                    os.remove(path)
+            except Exception as e:
+                logger.warning(f"Failed to remove temporary file {path}: {e}")
+        self.temp_image_paths = []
